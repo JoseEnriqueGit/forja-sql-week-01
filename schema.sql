@@ -6,11 +6,11 @@ CREATE OR REPLACE TABLE players (
 
 CREATE OR REPLACE TABLE  accounts (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    players_id BIGINT NOT NULL,
+    player_id BIGINT NOT NULL,
     type VARCHAR(50) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT `fk_accounts_players`
-    FOREIGN KEY (players_id) REFERENCES players (id)
+    FOREIGN KEY (player_id) REFERENCES players (id)
 )ENGINE=InnoDB;
 
 CREATE OR REPLACE TABLE transactions (
@@ -36,11 +36,11 @@ CREATE OR REPLACE TABLE items (
 
 CREATE OR REPLACE TABLE player_items (
     id BIGINT NOT NULL AUTO_INCREMENT PRIMARY KEY,
-    players_id BIGINT NOT NULL,
+    player_id BIGINT NOT NULL,
     items_id BIGINT NOT NULL,
     quantity INT NOT NULL,
     CONSTRAINT `fk_player_items_player`
-    FOREIGN KEY (players_id) REFERENCES players (id),
+    FOREIGN KEY (player_id) REFERENCES players (id),
     CONSTRAINT `fk_player_items_item`
     FOREIGN KEY (items_id) REFERENCES items (id)
 )ENGINE=InnoDB;
