@@ -25,6 +25,7 @@ INSERT INTO items (id, name, description, base_value, category) VALUES ( 3, 'cam
 INSERT INTO transactions (id, from_account_id, to_account_id, type, amount, created_at) VALUES ( 1, 1, 2, 'spawn', 100, '2026-05-22 10:56:00');
 INSERT INTO transactions (id, from_account_id, to_account_id, type, amount, created_at) VALUES ( 2, 1, 3, 'spawn', 100, '2026-05-22 10:56:00');
 INSERT INTO transactions (id, from_account_id, to_account_id, type, amount, created_at) VALUES ( 3, 2, 3, 'transfer', 25, '2026-05-22 10:56:00');
+INSERT INTO transactions (id, from_account_id, to_account_id, type, amount, created_at) VALUES (4, 1, 2, 'transfer', 50, '2026-06-02 10:14:00');
 
 INSERT INTO player_items (id, player_id, items_id, quantity) VALUES ( 1, 2, 1, 1);
 INSERT INTO player_items (id, player_id, items_id, quantity) VALUES ( 2, 3, 1, 1);
