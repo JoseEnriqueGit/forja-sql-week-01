@@ -2,8 +2,16 @@
 
 Esta base de datos guarda datos de los jugadores como la transacciones, los items de los jugadores y sus cuentas, para simular la economía de un mundo virtual.
 
-## Cómo levantarlo 
-Con `docker compose up -d` se arranca en base a la imagen, luego hay que ejecutar schema.sql primero (crea las tablas) y seed.sql después (inserta los datos), desde tu cliente SQL.
+## Cómo levantarlo
+Con `docker compose up -d` se levantan la base MariaDB y Adminer.
+
+Luego se crea la base y se carga el schema por terminal (PowerShell):
+
+    docker exec -i forja-sql-week-01-db-1 mariadb -u root -p<pass> -e "CREATE DATABASE IF NOT EXISTS economy;"
+    Get-Content schema.sql | docker exec -i forja-sql-week-01-db-1 mariadb -u root -p<pass> economy
+    Get-Content seed.sql   | docker exec -i forja-sql-week-01-db-1 mariadb -u root -p<pass> economy
+
+Notas: el cliente de MariaDB 11 se llama `mariadb` (no `mysql`); en PowerShell se usa `Get-Content archivo | ...` porque el operador `<` no está soportado; el flag `-i` mantiene abierta la entrada para la tubería. Para recargar limpio (con FK), primero `DROP DATABASE economy; CREATE DATABASE economy;`.
 
 ## Decisiones de diseño
 ## **¿Por qué accounts separada de players?**
