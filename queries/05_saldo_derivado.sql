@@ -1,4 +1,4 @@
--- escrita de memoria en N min, verificada: suma = 0
+-- escrita de memoria en 15 minutos, verificada: suma = 0
 SELECT P.id, P.name, A.id,
     SUM(CASE WHEN to_account_id = A.player_id THEN amount
     WHEN from_account_id = A.player_id THEN -amount END) AS Total
