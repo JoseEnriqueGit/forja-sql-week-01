@@ -29,3 +29,5 @@ INSERT INTO transactions (id, from_account_id, to_account_id, type, amount, crea
 
 INSERT INTO player_items (id, player_id, items_id, quantity) VALUES ( 1, 2, 1, 1);
 INSERT INTO player_items (id, player_id, items_id, quantity) VALUES ( 2, 3, 1, 1);
+
+SELECT A.id, P.name FROM accounts A LEFT JOIN players P ON P.id = A.player_id WHERE A.id = 2;

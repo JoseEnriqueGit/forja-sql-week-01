@@ -1,8 +1,8 @@
 -- escrita de memoria en 15 minutos, verificada: suma = 0
-SELECT P.id, P.name, A.id,
-    SUM(CASE WHEN to_account_id = A.player_id THEN amount
-    WHEN from_account_id = A.player_id THEN -amount END) AS Total
-        FROM players P
-            INNER JOIN accounts A ON P.id = A.player_id
-            INNER JOIN transactions T ON P.id = T.from_account_id OR P.id = T.to_account_id
-    GROUP BY A.id;
+SELECT A.id AS Id, A.player_id AS Jugador,
+    SUM(CASE WHEN to_account_id = A.id THEN  amount
+             WHEN from_account_id = A.id THEN -amount
+    END) AS Saldo
+FROM accounts A LEFT JOIN transactions T
+    ON A.id = T.to_account_id OR A.id = T.from_account_id
+GROUP BY A.id;
