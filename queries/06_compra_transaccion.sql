@@ -13,7 +13,9 @@ FROM accounts A LEFT JOIN transactions T
     ON A.id = T.to_account_id OR A.id = T.from_account_id
 GROUP BY A.id;
 
--- Predicion:  Saldo 105
+-- Predicion: 1       1       -230.00
+-- Predicion: 2       2       105.00
+-- Predicion: 3       3       125.00
 
 START TRANSACTION;
 
@@ -28,10 +30,23 @@ FROM accounts A LEFT JOIN transactions T
     ON A.id = T.to_account_id OR A.id = T.from_account_id
 GROUP BY A.id;
 
--- Predicion:  Saldo 95
+-- Predicion: 1       1       -220.00
+-- Predicion: 2       2       95.00
+-- Predicion: 3       3       125.00
 
 SELECT P.name AS NOMBRE, I.name AS NONBRE_ITEM, PI.quantity
 FROM players AS P INNER JOIN player_items AS PI ON P.id = PI.player_id  INNER JOIN items AS I ON PI.items_id = I.id
 WHERE P.id = 2;
 
+-- Predicion: Jose    agua    1
+-- Predicion: Jose    camisa  1
+-- Predicion: Jose    camisa  1
+
 ROLLBACK;
+
+SELECT P.name AS NOMBRE, I.name AS NONBRE_ITEM, PI.quantity
+FROM players AS P INNER JOIN player_items AS PI ON P.id = PI.player_id  INNER JOIN items AS I ON PI.items_id = I.id
+WHERE P.id = 2;
+
+-- Predicion: Jose    agua    1
+-- Predicion: Jose    camisa  1
