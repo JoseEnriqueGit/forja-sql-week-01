@@ -1,3 +1,10 @@
+/*
+Sin transaccion, si el servidor se cae entre el INSERT de transactions y el de player_items:
+Primero le quitara los 20 dolares pero el item no se registrara en el invetario de jugador.
+Si estuvieran al revés, recibiría el item gratis
+Le cuesta al dueño del server
+*/
+
 SELECT A.id AS Id, A.player_id AS Jugador,
     SUM(CASE WHEN to_account_id = A.id THEN  amount
              WHEN from_account_id = A.id THEN -amount
